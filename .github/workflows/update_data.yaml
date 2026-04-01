@@ -31,7 +31,7 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@://github.com"
           
           # Força o rastreamento do arquivo caso ele seja novo ou tenha mudado
-          git add data.json
+          git add test/data.json
           
           # O 'git diff' verifica se houve mudança real para evitar erro de commit vazio
           if git diff --quiet && git diff --staged --quiet; then
