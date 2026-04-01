@@ -19,8 +19,8 @@ jobs:
 
       - name: Instalar dependências
         run: |
-          pip install playwright # Liste suas bibliotecas aqui
-          playwright install
+          pip install requests # Liste suas bibliotecas aqui
+          # playwright install
 
       - name: Executar o scraper
         run: python test/main.py # Caminho para o seu script
