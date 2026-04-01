@@ -14,4 +14,4 @@ def web_scrape(url: str):
 
 data = web_scrape('https://pokemondb.net/pokedex/bulbasaur')
 with open('data.json', 'w') as f:
-    json.dump(data)
+    json.dump(data, f)
