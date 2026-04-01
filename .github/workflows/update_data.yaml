@@ -19,7 +19,7 @@ jobs:
 
       - name: Instalar dependências
         run: |
-          pip install requests beautifulsoup4 # Liste suas bibliotecas aqui
+          pip install json playwright # Liste suas bibliotecas aqui
 
       - name: Executar o scraper
         run: python test/main.py # Caminho para o seu script
