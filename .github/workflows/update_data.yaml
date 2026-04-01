@@ -28,7 +28,15 @@ jobs:
       - name: Commit e Push dos arquivos alterados
         run: |
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@://github.com"
-          git add test/data.json
-          git commit -m "Auto-update: novos dados coletados" || exit 0
-          git push
+          git config --global user.email "41898282+github-actions[bot]@://github.com"
+          
+          # Força o rastreamento do arquivo caso ele seja novo ou tenha mudado
+          git add data.json
+          
+          # O 'git diff' verifica se houve mudança real para evitar erro de commit vazio
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "Nenhuma mudança detectada no JSON."
+          else
+            git commit -m "Auto-update: novos dados coletados"
+            git push
+          fi
