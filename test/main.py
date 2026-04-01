@@ -12,11 +12,6 @@ def web_scrape(url: str):
         
         return data
 
-def main():
-    page = str(input('Enter a page URL: '))
-    data = web_scrape(page)
-    with open('data.json', 'w') as f:
-        json.dump(data)
-
-if __name__ == '__main__':
-    main()
+data = web_scrape('https://pokemondb.net/pokedex/bulbasaur')
+with open('data.json', 'w') as f:
+    json.dump(data)
