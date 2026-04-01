@@ -1,0 +1,33 @@
+name: Atualizar Dados JSON
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Executa a cada hora. Ajuste conforme necessário.
+  workflow_dispatch: # Permite que você execute manualmente para testar.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar dependências
+        run: |
+          pip install requests beautifulsoup4 # Liste suas bibliotecas aqui
+
+      - name: Executar o scraper
+        run: python test/main.py # Caminho para o seu script
+
+      - name: Commit e Push dos arquivos alterados
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@://github.com"
+          git add test/data.json
+          git commit -m "Auto-update: novos dados coletados" || exit 0
+          git push
