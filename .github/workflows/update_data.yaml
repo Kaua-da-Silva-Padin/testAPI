@@ -27,8 +27,8 @@ jobs:
 
       - name: Commit e Push dos arquivos alterados
         run: |
-          git config --global user.name "PauloV-142"
-          git config --global user.email "paulo.almeida142@etec.sp.gov.br"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@://github.com"
           
           # Força o rastreamento do arquivo caso ele seja novo ou tenha mudado
           git add test/data.json
